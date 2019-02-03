@@ -16,7 +16,7 @@ body {
   background-color: #92c6ea;
   font-size: 22px;
   font-weight: bold;
-  color: #5f5f5e;
+  color: #000000;
   text-transform: unset;
   letter-spacing: 2px;
   padding: 25px;
@@ -46,7 +46,8 @@ body {
   text-align: center;
   padding-top: 30px;
   padding-bottom: 5px;
-  color: #ffffff;
+  color: #00bfff;
+  text-shadow: #000000 -7px -7px 0;
 }
 .subtitle {
   font-family: 'ZCOOL QingKe HuangYou', cursive;
@@ -55,7 +56,8 @@ body {
   text-align: center;
   padding-top: 5px;
   padding-bottom: 20px;
-  color: #ffffff;
+  color: #00bfff;
+  text-shadow: #000000 -5px -5px 0;
 }
 #instructions {
   font-family: 'ZCOOL QingKe HuangYou', cursive;
@@ -64,7 +66,8 @@ body {
   text-align: center;
   padding-top: 5px;
   padding-bottom: 5px;
-  color: #ffffff;
+  color: #00bfff;
+  text-shadow: #000000 -2px -2px 0;
 }
 #no-own-pokemon {
   font-family: 'ZCOOL QingKe HuangYou', cursive;
@@ -73,7 +76,8 @@ body {
   text-align: center;
   padding-top: 0;
   padding-bottom: 5px;
-  color: #ffffff;
+  color: #00bfff;
+  text-shadow: #000000 -1px -1px 0;
 }
 
 #fill-in {
@@ -83,7 +87,7 @@ body {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 30px;
-  color: #ffffff;
+  color: #000000;
 }
 #wrong-letters {
   font-family: 'ZCOOL QingKe HuangYou', cursive;
@@ -92,7 +96,7 @@ body {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 30px;
-  color: #ffffff;
+  color: #000000;
 }
 #guess-count {
   font-family: 'ZCOOL QingKe HuangYou', cursive;
@@ -101,7 +105,7 @@ body {
   text-align: center;
   padding-top: 30px;
   padding-bottom: 50px;
-  color: #ffffff;
+  color: #000000;
 }
 #wins-count {
   font-family: 'ZCOOL QingKe HuangYou', cursive;
@@ -110,7 +114,7 @@ body {
   text-align: center;
   padding-top: 30px;
   padding-bottom: 50px;
-  color: #ffffff;
+  color: #000000;
 }
 #losses-count {
   font-family: 'ZCOOL QingKe HuangYou', cursive;
@@ -119,5 +123,5 @@ body {
   text-align: center;
   padding-top: 30px;
   padding-bottom: 50px;
-  color: #ffffff;
+  color: #000000;
 }
