@@ -1,82 +1,128 @@
-//Creat an array of Words
-const words = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard","Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Spearow","Fearow","Ekans","Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran","Nidorina","Nidoqueen","Nidoran","Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff","Zubat","Golbat","Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett","Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine","Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp","Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem","Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch'd","Doduo","Dodrio","Seel","Dewgong","Grimer","Muk","Shellder","Cloyster","Gastly","Haunter","Gengar","Onix","Drowzee","Hypno","Krabby","Kingler","Voltorb","Electrode","Exeggcute","Exeggutor","Cubone","Marowak","Hitmonlee","Hitmonchan","Lickitung","Koffing","Weezing","Rhyhorn","Rhydon","Chansey","Tangela","Kangaskhan","Horsea","Seadra","Goldeen","Seaking","Staryu","Starmie","Mr. Mime","Scyther","Jynx","Electabuzz","Magmar","Pinsir","Tauros","Magikarp","Gyarados","Lapras","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Porygon","Omanyte","Omastar","Kabuto","Kabutops","Aerodactyl","Snorlax","Articuno","Zapdos","Moltres","Dratini","Dragonair","Dragonite","Mewtwo","Mew"];
+// ------------------------------------ PSEUDO CODE: IN ALL CAPS ----------------------------------------
+// GRAB REFERENCE TO DOM ELEMENTS (1)
+// using '$' notation in front; that way you know what's a DOM element and what's not in JS
+var $newGameButton = document.getElementById('new-game-button');
+var $placeholders = document.getElementById('placeholders');
+var $guessedLetters = document.getElementById('guessed-letters');
+var $guessesLeft = document.getElementById('guesses-left');
+var $wins = document.getElementById('wins');
+var $losses = document.getElementById('losses');
 
-//Choose word randomly
-let randomWord = Math.floor(Math.random()*words.length);
-let chosenWord = words[randomWord]; //choosing the random word
-let rightWord = [];
-let wrongWord = [];
-// console.log(chosenWord); logging the word to the console
-let underScore = [];
+// CREATE VARIABLES FOR GAME (2)
+// WORDBANK, WINS, LOSSES, PICKED WORD, GUESSES LEFT, GAME RUNNING, PICKED WORD PLACEHOLDER, GUESSED LETTER BANK, INCORRECT LETTER BANK
+var wordBank = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard","Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Spearow","Fearow","Ekans","Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran","Nidorina","Nidoqueen","Nidoran","Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff","Zubat","Golbat","Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett","Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine","Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp","Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem","Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch'd","Doduo","Dodrio","Seel","Dewgong","Grimer","Muk","Shellder","Cloyster","Gastly","Haunter","Gengar","Onix","Drowzee","Hypno","Krabby","Kingler","Voltorb","Electrode","Exeggcute","Exeggutor","Cubone","Marowak","Hitmonlee","Hitmonchan","Lickitung","Koffing","Weezing","Rhyhorn","Rhydon","Chansey","Tangela","Kangaskhan","Horsea","Seadra","Goldeen","Seaking","Staryu","Starmie","Mr. Mime","Scyther","Jynx","Electabuzz","Magmar","Pinsir","Tauros","Magikarp","Gyarados","Lapras","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Porygon","Omanyte","Omastar","Kabuto","Kabutops","Aerodactyl","Snorlax","Articuno","Zapdos","Moltres","Dratini","Dragonair","Dragonite","Mewtwo","Mew"];
+var wins = 0;
+var losses = 0;
+var guessesLeft = 7;
+var gameRunning = false;
+var pickedWord = '';
+var pickedWordPlaceholderArr = []; // set to array bc we want to do pushes on it
+var guessedLetterBank = []; // set to array bc we want to do pushes on it
+var incorrectLetterBank = []; // set to array bc we want to do pushes on it
 
-//DOM manipulation
-let docUnderScore = document.getElementsByClassName('underscore');
-let docRightGuess = document.getElementsByClassName('rightGuess');
-let docWrongGuess = document.getElementsByClassName('wrongGuess');
+// NEW GAME FUNCTION TO RESET ALL STATS (3)
+// PICK NEW WORD AND CREATE PLACEHOLDERS
+function newGame() {
+  // reset all game info
+  gameRunning = true; // don't want game logic to run if game is not running; don't want it to run against user; only true when we hit New Game
+  guessesLeft = 7;
+  guessedLetterBank = [];
+  incorrectLetterBank = [];
+  pickedWordPlaceholderArr = [];
 
+  // pick a new word
+  pickedWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
-// Testing
-console.log(chosenWord);
-
-//Create underscore based on length of word
-//generate underscores based on the length of the array
-//so create a for loop
-let generateUnderscore = () => {
-  for (let i = 0; i < chosenWord.length; i++) {
-    underScore.push('_'); //what are we pushing? underscores!
-    docUnderScore[0].innerHTML = underScore.join('');
-  }
-  return underScore;
-}
-console.log(generateUnderscore()); 
-
-//Get users guess
-//have to capture the user's guess....have to do an event
-document.addEventListener('keypress', (event) => {
-  // console.log(event);
-  //convert key code into a letter....js keycode....
-  // let keycode = event.keyCode; //javascript keyCode
-  // // console.log(keycode);
-  // //next step, need to convert that into a string
-  // let keyword = String.fromCharCode(keycode);
-  // console.log(keyword);
-  let keyword = String.fromCharCode(event.keyCode); //combo of line 26 and 29
-  //compare it to the word that was chosen
-  //using indexOf method..tells you if the string youre looking for exist, give you a number greater than -1
-  //if user guess is right
-  if (chosenWord.indexOf(keyword) > -1) {
-  // add to right words array
-    rightWord.push(keyword);  
-    //replace underscore with right letter
-    underScore[chosenWord.indexOf(keyword)] = keyword;
-    docUnderScore[0].innerHTML = underScore.join(' ');
-    docRightGuess[0].innerHTML = rightWord;
-    
-    //check to see if user word matches guesses
-    if (underScore.join('') === chosenWord) {
-      alert('You win!');
+  // create placeholders out of new pickedWord
+  for (var i = 0; i < pickedWord.length; i++) {
+    // check to see what it is
+    if (pickedWord[i] === ' ') {
+      pickedWordPlaceholderArr.push(' ');
+    } else {
+      pickedWordPlaceholderArr.push('_');
     }
   }
+  // write all new game info to DOM... resetting guesses left, new place holders show to diff words; so that person knows that's what the word they're trying to get; clearing our the bank with incorrect guesses
+  $guessesLeft.textContent = guessesLeft; // reset my guesses left; want to show 7 at the new game; not what previous game had
+  $placeholders.textContent = pickedWordPlaceholderArr.join(''); // turn it back into a string, that way it doesn't print out with all of the comas; new place holder with NEW word
+  $guessedLetters.textContent = incorrectLetterBank; // more just if i'm playing multiple games in a row, to clear that bank
+}
 
-    // console.log(underScore); //cool, it works
-    // console.log(rightWord);
-    // // console.log(true);
+// LETTERGUESS FUNCTION (5)
+// TAKES IN THE LETTER YOU PRESSED AND SEES IF IT'S IN THE SELECTED WORD
+function letterGuess(letter) {
+  console.log(letter); // make sure it works
+
+  if (gameRunning === true && guessedLetterBank.indexOf(letter) === -1) { // returns -1, means we haven't guessed the letter yet
+    // run game logic
+    guessedLetterBank.push(letter); // makes a note that we've guessed it already
+
+    // check if guessed letter is in my picked word
+    for (var i = 0; i < pickedWord.length; i++) {
+      // convert both values to lower case so i can compare them correctly
+      if (pickedWord[i].toLowerCase() === letter.toLowerCase()) { // making sure to check apples with apples (bc in wordBank there are capital letters)
+        // if a match, swap out that character in the placeholder with the actual letter
+        pickedWordPlaceholderArr[i] = pickedWord[i]; // pickedWord[i] bc if guessed lowercase but it's uppercase you'll just replace it with what's in picked word
+      } // at each iteration we check to see if that word at that character is the same letter user gueses convert; if true grab pickedwordplacedholder and reassign its value to be whatever pickedWord at i ([i]) is 
+    }
+    // write that back to the DOM
+    $placeholders.textContent = pickedWordPlaceholderArr.join('');
+    // pass letter into our checkIncorrect function; taking event.key and passing it through this ^ function and its logic
+    checkIncorrect(letter);
+  } 
   else {
-    wrongWord.push(keyword);
-    docWrongGuess[0].innerHTML = wrongWord;
-
-    // console.log(wrongWord);//cool, it works
+    if (!gameRunning) { // ! says if it's not running; like the opposite --> shorthand for gameRunning === false;
+      alert("The game isn't running, click on the New Game button to start over.");
+    } else {
+      alert("You've already guessed this letter, try a new one!");
+    }
   }
-  //need to check if all underscores have been filled
-  // if (underScore.join) = keyword;
-  // alert("you win");
+}
 
-});
+// CHECKINCORRECT(LETTER)
+function checkIncorrect(letter) {
+  // check to see if letter DIDN'T make it into our pickedWordPlaceholder
+  // therefore, incorrect guess
+  if (pickedWordPlaceholderArr.indexOf(letter.toLowerCase()) === -1 &&
+  pickedWordPlaceholderArr.indexOf(letter.toUpperCase()) === -1) { // need to check both bc we have both capital and lowercase letters
+    // decrement guesses
+    guessesLeft--;
+    // add incorrect letter to incorrectLetterBank
+    incorrectLetterBank.push(letter);
+    // write new bank of incorrect letters guess to DOM
+    $guessedLetters.textContent = incorrectLetterBank.join(' '); 
+    // write new amount of guesses left to DOM
+    $guessesLeft.textContent = guessesLeft;
+  }
+  checkLoss();
+}
 
-underScore[0].innerHTML = generateUnderscore().join(' ');
+// CHECKLOSS
+function checkLoss() { // don't take arguments bc just checking on globally created variables
+  if (guessesLeft === 0) {
+    losses++;
+    gameRunning = false; // so, tap another letter then game over
+    $losses.textContent = losses; // write it to the DOM
+    $placeholders.textContent = pickedWord; // fills in the blanks if you lose
+  }
+  checkWin();
+}
 
-//Check if guess is right
+// CHECKWIN
+function checkWin() {
+  if (pickedWord.toLowerCase() === pickedWordPlaceholderArr.join('').toLowerCase()) { // means like, if all identical then you win
+    wins++;
+    gameRunning = false;
+    $wins.textContent = wins;
+  }
+}
 
-//If right, push to right array
+// ADD EVENT LISTENER FOR NEW GAME BUTTON (4)
+$newGameButton.addEventListener('click', newGame);
 
-//If wrong, push to wrong array
+// ADD ONKEYUP EVEN TO TRIGGER LETTERGUESS (6)
+document.onkeyup = function(event) {
+  if (event.keyCode >= 65 && event.keyCode <= 90) { // 65 keycode for 'a'; 90 keycode for 'z'; only if it's a to z
+    letterGuess(event.key); // event.key is the actual letter
+  } // only pass it through onlly if it's a to z; if it's true then i run my letterguess fxn (pass the actual key from event and pass it up to fxn letterGuess(letter) and everything goes through there)
+}

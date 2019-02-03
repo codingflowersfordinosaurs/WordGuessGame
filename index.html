@@ -4,34 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../WordGuessGame/assets/css/reset.css">
-  <link rel="stylesheet" href="../WordGuessGame/assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
-  <title>Word Guess Game</title>
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet">
+  <title>Hangman</title>
 </head>
-<body id="background-image">
+<body>
 
-  <div class="container">
-    <header>
-      <h1 class="title">Hangman Game</h1>
-      <h3 class="subtitle">Pokemon: First Generation</h3>
-    </header>
+  <div>
+    <div class="container">
+
+      <div class="row">
+        <h1 class="col-lg-12 title">Hangman Game</h1>
+        <h3 class="col-lg-12 subtitle">Pokemon: First Generation</h3>
+      </div>
+      <div class="row">
+        <h6 class="col-lg-12" id="instructions">Press the Button to Begin!</h6>
+        <h6 class="col-lg-12" id="no-own-pokemon">No copyright infringement. This is just for fun. I don't own Pokémon.</h6>
+      </div>
+
+    </div>
+
+    <div class="container" id="background-image2">
+
+      <div class="row">
+        <div class="col-lg-6">
+          <h2 id="fill-in">Fill These In!
+            <br>
+            <span id="placeholders"></span>
+          </h2>
+        </div>
+        <div class="col-lg-6">
+          <h2 id="wrong-letters">Incorrect Letters Guessed
+            <br>
+            <span id="guessed-letters"></span>
+          </h2>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-4">
+          <h3 id="guess-count">
+            Guesses Left: <span id="guesses-left">0</span>
+          </h3>
+        </div>
+        <div class="col-lg-4">
+          <h3 id="wins-count">
+            Wins: <span id="wins">0</span>
+          </h3>
+        </div>
+        <div class="col-lg-4">
+          <h3 id="losses-count">
+            Losses: <span id="losses">0</span>
+          </h3>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+
+    <div class="container">
+      <button id="new-game-button">
+        Start a New Game
+      </button>
+    </div>
+
+    <br><br>
+
   </div>
 
-  <div class="container">
-    <section id="background-image2">
-      <div class="underscore"></div>
-      <br>
-      <div class="rightGuess">right guess</div>
-      <br>
-      <div class="wrongGuess">wrong guess</div>
-    </section>
-  </div>
-
-
-  <!-- difference between display and position: display is a prpotety of the block and positioning is how it inherently assigns its location in the browser; diff display block and display inline block:  -->
-
-  <script type="text/javascript" src="../WordGuessGame/assets/javascript/game.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./assets/javascript/game.js"></script>
 
 </body>
 </html>
