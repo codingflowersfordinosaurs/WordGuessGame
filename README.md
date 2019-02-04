@@ -48,6 +48,7 @@
 <h2>Getting help with the project</h2>
 <p>I definitely needed help with this, and here are some resources I used</p>
 <p>MDN, W3Schools, Stackoverflow, and YouTube</p>
+<p>Asking others to take a look at your code, clarifying a topic you don't fully understand, or your eyes are just so tired from looking at your code...these are all good things to do when working on your code</p>
 <p>Learning how to google for better results is something to learn on this coding journey</p>
 <!-- WHO MAINTAINS AND CONTRIBUTES TO THE PROJECT -->
 <h2>Maintaining and Contributing to the project</h2>
