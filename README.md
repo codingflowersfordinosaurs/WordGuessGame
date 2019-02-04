@@ -1,13 +1,12 @@
 # WordGuessGame (Hangman)
 <!-- TITLE -->
-<h1>Word Guess Game</h1>
 <p>Theme: Pokemon the First Generation</p>
-<br><br>
+<br>
 <!-- WHAT THE PROJECT DOES -->
 <h2>What the project does</h2>
 <p>The Word Guess Game is essentially the 'Hangman' game without the hanging man illustration<p>
 <p>There are 5 sections that house: wins, losses, number of guesses left, wrong letters, and correct letters</p>
-<br><br>
+<br>
 <h2>Getting started</h2>
 <p><strong>First:</strong></p>
 <p>Click on the "Start a New Game" button</p>
@@ -39,14 +38,18 @@
 <p>This is why I believe this project is useful</p>
 <br><br>
 <!-- HOW USERS CAN GET STARTED WITH THE PROJECT -->
+<h2>Getting started with the project</h2>
 <p>Knowing HTML and CSS is a plus, so you can do basic set ups to make your browser page more interesting to look at</p>
 <p>Javascript...functions, functions, functions. THESE ARE YOUR FRIENDS (i still need to practice these; along with while loops, if/else statements...big picture is easy to think about(the concepts), but actually getting down and dirty with the code and having the ability to write decent code is by PRACTICE(sometimes i feel there aren't enough hours in the day, but i feel i'm making small steps every day, which is awesome).</p>
 <p>What I did was to set up my HTML and CSS first, so the colors would help inspire me how to set my JavaScript code up</p>
+<br>
 <!-- WHERE USERS CAN GET HELP WITH YOUR PROJECT -->
+<h2>Getting help with the project</h2>
 <p>I definitely needed help with this, and here are some resources I used</p>
 <p>MDN, W3Schools, Stackoverflow, and YouTube</p>
 <p>Learning how to google for better results is something to learn on this coding journey</p>
 <!-- WHO MAINTAINS AND CONTRIBUTES TO THE PROJECT -->
+<h2>Maintaining and Contributing to the project</h2>
 <p>So far, only I maintain and contribute to this project</p>
 <p>Maybe more contributors will appear in the future!</p>
 <p>:)</p>
