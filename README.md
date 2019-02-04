@@ -7,7 +7,8 @@
 <p>The Word Guess Game is essentially the 'Hangman' game without the hanging man illustration<p>
 <p>There are 5 sections that house: wins, losses, number of guesses left, wrong letters, and correct letters</p>
 <br>
-<h2>Getting started</h2>
+<!-- HOW TO PLAY THE GAME -->
+<h2>Playing the Game</h2>
 <p><strong>First:</strong></p>
 <p>Click on the "Start a New Game" button</p>
 <p>This will start the game and have a random word for you(the user) to figure out (underscores will appear in the "Fill These In" section</p>
